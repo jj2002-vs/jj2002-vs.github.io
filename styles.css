@@ -1,0 +1,279 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+/* header */
+header {
+    background: #222;
+    color: white;
+    padding: 20px;
+}
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: auto;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+}
+
+.navbar ul li {
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+}
+/* Main section with event*/
+.hero {
+    background: url('heroBack.jpg') no-repeat center center/cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+.cta-btn {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.cta-btn::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 20px;
+    background: radial-gradient(red, darkred);
+    opacity: 0;
+    transition: top 0.4s ease, opacity 0.3s ease;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.cta-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px red;
+}
+
+.cta-btn:hover::after {
+    top: 90%;
+    opacity: 1;
+}
+.hero-content h1 {
+    font-size: 3rem;
+}
+.cta-btn {
+    background: #ffcc00;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+/* Features */
+.features {
+    display: flex;
+    justify-content: space-around;
+    padding: 50px 0;
+    background: #f4f4f4;
+}
+
+.feature {
+    width: 40%;
+    text-align: center;
+}
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+/* Dropdown wrapper */
+.navbar ul li.dropdown {
+    position: relative;
+}
+
+/*submenu */
+.navbar ul li .dropdown-menu {
+    display: none;
+    position: absolute;
+    background: #333;
+    top: 100%; 
+    left: 0;
+    padding: 10px 0;
+    border-radius: 5px;
+    min-width: 150px;
+    z-index: 1000;
+}
+
+/* Keep dropdown visible */
+.navbar ul li.dropdown:hover .dropdown-menu,
+.navbar ul li .dropdown-menu:hover {
+    display: block;
+}
+
+/* Submenu item styles */
+.navbar ul li .dropdown-menu li {
+    padding: 8px 20px;
+}
+
+.navbar ul li .dropdown-menu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+}
+
+.navbar ul li .dropdown-menu li a:hover {
+    background: #555;
+}
+/* Blood effect shared class */
+.blood-effect {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.blood-effect::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+    height: 20px;
+    background: radial-gradient(red, darkred);
+    opacity: 0;
+    transition: top 0.4s ease, opacity 0.3s ease;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.blood-effect:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px red;
+}
+
+.blood-effect:hover::after {
+    top: 90%;
+    opacity: 1;
+}
+/* Chat Icon and Popup Styles */
+.chat-container {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.chat-popup {
+    background-color: white;
+    color: #333;
+    padding: 10px 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    white-space: nowrap;
+    font-size: 14px;
+    animation: fadeIn 0.5s ease forwards;
+    transition: opacity 0.3s ease;
+}
+
+.chat-popup::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 20px;
+    border-width: 10px 10px 0;
+    border-style: solid;
+    border-color: white transparent transparent;
+}
+
+.chat-icon {
+    width: 50px;
+    height: 50px;
+    background-color: #ffcc00;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+.chat-icon i {
+    color: #222;
+    font-size: 24px;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for the popup to appear after a delay */
+.chat-popup {
+    animation: popupDelay 3s ease forwards;
+    opacity: 0;
+}
+
+@keyframes popupDelay {
+    0%, 20% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    30%, 90% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+}
+.logo-effect {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.logo-effect:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px red;
+}
